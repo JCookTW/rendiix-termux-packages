@@ -36,7 +36,7 @@ termux_setup_toolchain_gnu() {
 	fi
 
 	case "$TERMUX_ARCH" in
-		"aarch64"|"arm") CFLAGS+=" -fstack-protector-strong";;
+		"aarch64"|"arm") CFLAGS+=" -mtune=cortex-a720 -fstack-protector-strong";;
 		"x86_64"|"i686") CFLAGS+=" -mtune=generic -fcf-protection";;
 	esac
 

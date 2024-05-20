@@ -56,6 +56,8 @@ termux_setup_toolchain_23c() {
 		export GOARCH=386
 		export GO386=sse2
 	elif [ "$TERMUX_ARCH" = "aarch64" ]; then
+		CFLAGS+=" -mtune=cortex-a720"
+		CPPFLAGS+=" -mtune=cortex-a720"
 		export GOARCH=arm64
 	elif [ "$TERMUX_ARCH" = "x86_64" ]; then
 		export GOARCH=amd64

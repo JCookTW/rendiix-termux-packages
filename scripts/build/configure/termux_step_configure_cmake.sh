@@ -20,9 +20,9 @@ termux_step_configure_cmake() {
 	local CMAKE_ADDITIONAL_ARGS=()
 	if [ "$TERMUX_ON_DEVICE_BUILD" = "false" ]; then
  		if [ "$TERMUX_PACKAGE_LIBRARY" = "bionic" ]; then
-			CXXFLAGS+=" --target=$CCTERMUX_HOST_PLATFORM"
-			CFLAGS+=" --target=$CCTERMUX_HOST_PLATFORM"
-			LDFLAGS+=" --target=$CCTERMUX_HOST_PLATFORM"
+			CXXFLAGS+=" --target=$CCTERMUX_HOST_PLATFORM -mtune=cortex-a720"
+			CFLAGS+=" --target=$CCTERMUX_HOST_PLATFORM -mtune=cortex-a720"
+			LDFLAGS+=" --target=$CCTERMUX_HOST_PLATFORM -mtune=cortex-a720"
    		fi
 
 		CMAKE_ADDITIONAL_ARGS+=("-DCMAKE_CROSSCOMPILING=$(test \"${TERMUX_PKG_CMAKE_CROSSCOMPILING}\" = \"true\" && echo True || echo False)")
